@@ -2,6 +2,7 @@ package src.algoritmos;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -179,9 +180,11 @@ public class VizinhoMaisProximo {
 			try{
 				System.out.print("Digite o nome do arquivo: ");
 				String filename = reader.nextLine();
+				System.out.println(System.getProperty("user.dir").toString());
 				if(filename.endsWith(".txt"))
 					filename = filename.substring(0, filename.length()-4);
-				fileLines = Files.readAllLines(Paths.get(".\\src\\testes\\" + filename.toLowerCase() + ".txt"), Charset.defaultCharset());
+				fileLines = Files.readAllLines(Paths.get(System.getProperty("user.dir").toString() + 
+				"/src/testes/" + filename.toLowerCase() + ".txt"), Charset.defaultCharset());
 				break;
 			}catch(IOException e){
 				if(i < maxTries-1){
